@@ -42,7 +42,7 @@ namespace LobbySpy
     public delegate void OnUpdate(LobbyHandler handler, string[] names);
     public class LobbyHandler
     {
-        public readonly LeagueApi API;
+        private readonly LeagueApi API;
         private string[] _cache;
         private Region? _region;
 
