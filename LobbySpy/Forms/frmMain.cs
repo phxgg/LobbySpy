@@ -150,7 +150,8 @@ namespace LobbySpy
                         if (_handlers[i].GetSummoners().Length != 0)
                         {
                             WriteHistory("* New lobby");
-                            //WriteHistory(string.Join(",", _handlers[0].GetSummoners()));
+                            WriteHistory(string.Join("\n", _handlers[0].GetSummoners()));
+                            WriteHistory("");
                             EnableForm(true);
                         }
                         else
@@ -163,8 +164,6 @@ namespace LobbySpy
 #if DEBUG
                             Console.WriteLine(_handlers[i].GetSummoners()[j]);
 #endif
-                            WriteHistory(_handlers[i].GetSummoners()[j]);
-                            WriteHistory("");
 
                             AddToLobby(_handlers[i].GetSummoners()[j]);
                         }
