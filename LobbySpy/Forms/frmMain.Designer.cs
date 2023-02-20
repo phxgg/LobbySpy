@@ -37,6 +37,7 @@
             this.toolStripMenuItemCredits = new System.Windows.Forms.ToolStripMenuItem();
             this.rtbHistory = new System.Windows.Forms.RichTextBox();
             this.lblHistory = new System.Windows.Forms.Label();
+            this.btnMultiUgg = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,10 +76,11 @@
             this.btnMultiOpgg.Enabled = false;
             this.btnMultiOpgg.Location = new System.Drawing.Point(15, 185);
             this.btnMultiOpgg.Name = "btnMultiOpgg";
-            this.btnMultiOpgg.Size = new System.Drawing.Size(230, 23);
+            this.btnMultiOpgg.Size = new System.Drawing.Size(110, 23);
             this.btnMultiOpgg.TabIndex = 4;
             this.btnMultiOpgg.Text = "Multi OP.GG";
             this.btnMultiOpgg.UseVisualStyleBackColor = true;
+            this.btnMultiOpgg.Click += new System.EventHandler(this.btnMultiOpgg_Click);
             // 
             // menuStrip1
             // 
@@ -124,11 +126,23 @@
             this.lblHistory.TabIndex = 7;
             this.lblHistory.Text = "Lobby History";
             // 
+            // btnMultiUgg
+            // 
+            this.btnMultiUgg.Enabled = false;
+            this.btnMultiUgg.Location = new System.Drawing.Point(135, 185);
+            this.btnMultiUgg.Name = "btnMultiUgg";
+            this.btnMultiUgg.Size = new System.Drawing.Size(110, 23);
+            this.btnMultiUgg.TabIndex = 8;
+            this.btnMultiUgg.Text = "Multi U.GG";
+            this.btnMultiUgg.UseVisualStyleBackColor = true;
+            this.btnMultiUgg.Click += new System.EventHandler(this.btnMultiUgg_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 237);
+            this.Controls.Add(this.btnMultiUgg);
             this.Controls.Add(this.lblHistory);
             this.Controls.Add(this.rtbHistory);
             this.Controls.Add(this.btnMultiOpgg);
@@ -159,6 +173,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCredits;
         private System.Windows.Forms.RichTextBox rtbHistory;
         private System.Windows.Forms.Label lblHistory;
+        private System.Windows.Forms.Button btnMultiUgg;
     }
 }
 

@@ -70,6 +70,13 @@ namespace LobbySpy
         {
             return _region;
         }
+
+        public Platform RegionToPlatform(Region? region)
+        {
+            if (region == null) return Platform.UNKNOWN;
+            return (Platform)region;
+        }
+
         private async Task Loop()
         {
             while (true)

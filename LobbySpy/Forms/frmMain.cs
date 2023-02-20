@@ -2,10 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net.Http;
 using System.Threading;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LobbySpy
 {
@@ -25,6 +23,7 @@ namespace LobbySpy
         private void EnableForm(bool enable)
         {
             if (this.btnMultiOpgg.InvokeRequired
+                || this.btnMultiUgg.InvokeRequired
                 || this.lbLobby.InvokeRequired)
             {
                 EnableFormCallback d = new EnableFormCallback(EnableForm);
@@ -35,6 +34,7 @@ namespace LobbySpy
                 this.lbLobby.Items.Clear();
                 this.lbLobby.Enabled = enable;
                 this.btnMultiOpgg.Enabled = enable;
+                this.btnMultiUgg.Enabled = enable;
             }
         }
 
@@ -122,21 +122,6 @@ namespace LobbySpy
             {
                 IsBackground = true
             }.Start();
-
-            btnMultiOpgg.Click += BtnMultiOpgg_Click;
-        }
-
-        private void BtnMultiOpgg_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var region = _handlers[0].GetRegion();
-                Process.Start($"https://www.op.gg/multisearch/{region ?? LobbySpy.Region.EUW}?summoners={string.Join(",", _handlers[0].GetSummoners())}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void UpdateLobby()
@@ -207,6 +192,33 @@ namespace LobbySpy
         {
             rtbHistory.SelectionStart = rtbHistory.Text.Length;
             rtbHistory.ScrollToCaret();
+        }
+
+        private void btnMultiOpgg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var region = _handlers[0].GetRegion();
+                Process.Start($"https://www.op.gg/multisearch/{region ?? LobbySpy.Region.EUW}?summoners={string.Join(",", _handlers[0].GetSummoners())}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnMultiUgg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var region = _handlers[0].GetRegion();
+                var webreg = _handlers[0].RegionToPlatform(region);
+                Process.Start($"https://u.gg/multisearch?summoners={string.Join(",", _handlers[0].GetSummoners())}&region={webreg.ToString().ToLower()}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
